@@ -26,11 +26,13 @@ def play_random_numbers(user_number):
     return message
 
 
-def  main_keyboard():
+def main_keyboard():
     return ReplyKeyboardMarkup([
-        ['Прислать котика',
-         KeyboardButton('Мои координаты', request_location=True)]
-    ])
+            ['Прислать котика',
+             KeyboardButton('Мои координаты', request_location=True),
+             'Заполнить анкету'
+             ]
+        ])
 
 
 def has_object_on_image(file_name, object_name):
@@ -63,28 +65,8 @@ def check_response_for_object(response, object_name):
 
     return False
 
+
 if __name__ == '__main__':
     print(has_object_on_image('images/cat_2.jpg', 'cat'))
     print(has_object_on_image('images/not_cat.jpg', 'cat'))
     print(has_object_on_image('images/not_cat2.jpg', 'dog'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

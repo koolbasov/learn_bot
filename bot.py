@@ -1,6 +1,7 @@
 import logging
 
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
+from telegram.ext import (Updater, CommandHandler, MessageHandler,
+                          Filters, ConversationHandler)
 
 from anketa import (anketa_start, anketa_name, anketa_rating, anketa_comment,
                     anketa_skip, anketa_dontknow)
@@ -22,7 +23,8 @@ def main():
             MessageHandler(Filters.regex('^(Заполнить анкету)$'), anketa_start)
         ],
         states={"name": [MessageHandler(Filters.text, anketa_name)],
-                "rating": [MessageHandler(Filters.regex('^(1|2|3|4|5)$'), anketa_rating)],
+                "rating": [MessageHandler(Filters.regex('^(1|2|3|4|5)$'),
+                                          anketa_rating)],
                 "comment": [
                     CommandHandler('skip', anketa_skip),
                     MessageHandler(Filters.text, anketa_comment)
@@ -37,7 +39,8 @@ def main():
     dp.add_handler(CommandHandler("start", greet_user))
     dp.add_handler(CommandHandler("guess", guess_number))
     dp.add_handler(CommandHandler("cat", send_cat_picture))
-    dp.add_handler(MessageHandler(Filters.regex('^(Прислать котика)$'), send_cat_picture))
+    dp.add_handler(MessageHandler(Filters.regex('^(Прислать котика)$'),
+                                  send_cat_picture))
     dp.add_handler(MessageHandler(Filters.photo, check_user_photo))
     dp.add_handler(MessageHandler(Filters.location, user_coordinates))
     dp.add_handler(MessageHandler(Filters.text, talk_to_me))
